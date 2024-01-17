@@ -20,7 +20,6 @@ jobs:
         #    dockerfile: Dockerfile
         #- run: hadolint Dockerfile
 
-
         - name: 'Build and push image'
           uses: azure/docker-login@v1
           with:
@@ -31,7 +30,7 @@ jobs:
             docker build . -t ${{ secrets.REGISTRY_LOGIN_SERVER }}/projectgroupe5:${{ github.sha }}
             docker push ${{ secrets.REGISTRY_LOGIN_SERVER }}/projectgroupe5:${{ github.sha }}
 
-        - name: Build and deploy Container App
+        - name: Build and deploy Container App 
           uses: azure/container-apps-deploy-action@v1
           with:
             containerAppName: projectgroupe5
