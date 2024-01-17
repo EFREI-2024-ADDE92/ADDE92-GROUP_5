@@ -24,9 +24,9 @@ jobs:
             docker build . -t ${{ secrets.REGISTRY_LOGIN_SERVER }}/projectgroupe5:${{ github.sha }}
             docker push ${{ secrets.REGISTRY_LOGIN_SERVER }}/projectgroupe5:${{ github.sha }}
 
-        - name: Create Azure container environment
-          run: |
-            az containerapp env create -n goupe2-container-env -g  ${{ secrets.RESOURCE_GROUP }} --location francecentral
+        #- name: Create Azure container environment
+        #  run: |
+        #    az containerapp env create -n goupe5-container-env -g  ${{ secrets.RESOURCE_GROUP }} --location francecentral
         
         - name: 'Deploy to Azure Container App'
           uses: azure/container-apps-deploy-action@v1
