@@ -21,18 +21,18 @@ jobs:
             username: ${{ secrets.REGISTRY_USERNAME }}
             password: ${{ secrets.REGISTRY_PASSWORD }}
         - run: |
-            docker build . -t ${{ secrets.REGISTRY_LOGIN_SERVER }}/irisprojectgoupe5:${{ github.sha }}
-            docker push ${{ secrets.REGISTRY_LOGIN_SERVER }}/irisprojectgoupe5:${{ github.sha }}
+            docker build . -t ${{ secrets.REGISTRY_LOGIN_SERVER }}/projectgroupe5:${{ github.sha }}
+            docker push ${{ secrets.REGISTRY_LOGIN_SERVER }}/projectgroupe5:${{ github.sha }}
 
         - name: 'Deploy to Azure Container Instances'
           uses: 'azure/aci-deploy@v1'
           with:
             resource-group: ${{ secrets.RESOURCE_GROUP }}
-            dns-name-label: appdbirisprojectgoupe5
-            image: ${{ secrets.REGISTRY_LOGIN_SERVER }}/irisprojectgoupe5:${{ github.sha }}
+            dns-name-label: projectgroupe5
+            image: ${{ secrets.REGISTRY_LOGIN_SERVER }}/projectgroupe5:${{ github.sha }}
             registry-login-server: ${{ secrets.REGISTRY_LOGIN_SERVER }}
             registry-username: ${{ secrets.REGISTRY_USERNAME }}
             registry-password: ${{ secrets.REGISTRY_PASSWORD }}
-            name: iris-goupe5
+            name: projectgroupe5
             location: 'france central'
             secure-environment-variables: API_KEY=${{ secrets.API_KEY }}
