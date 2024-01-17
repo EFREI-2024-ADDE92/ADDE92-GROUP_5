@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify
 import joblib
-import requests
+import numpy as np
 
 app = Flask(__name__)
 
@@ -24,10 +24,10 @@ def predict():
     model = joblib.load("model_knn.pkl")
 
     # Predict the flower class
-    features = ["sepal_length","sepal_width", "petal_length", "petal_width"]
+    features = np.array([[sepal_length, sepal_width, petal_length, petal_width]])
     prediction = model.predict(features)
 
-    return jsonify({'prediction': str("prediction")})
+    return jsonify({'prediction': str(prediction)})
 
 if __name__ == '__main__':
     app.run(port=8000, debug=True)
