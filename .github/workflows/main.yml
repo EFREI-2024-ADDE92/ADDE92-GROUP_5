@@ -24,15 +24,14 @@ jobs:
             docker build . -t ${{ secrets.REGISTRY_LOGIN_SERVER }}/projectgroupe5:${{ github.sha }}
             docker push ${{ secrets.REGISTRY_LOGIN_SERVER }}/projectgroupe5:${{ github.sha }}
 
-        - name: 'Deploy to Azure Container Instances'
-          uses: 'azure/aci-deploy@v1'
+        - name: Create Azure container environment
+          run: |
+            az containerapp env create -n goupe2-container-env -g  ${{ secrets.RESOURCE_GROUP }} --location francecentral
+        
+        - name: 'Deploy to Azure Container App'
+          uses: azure/container-apps-deploy-action@v1
           with:
-            resource-group: ${{ secrets.RESOURCE_GROUP }}
-            dns-name-label: projectgroupe5
-            image: ${{ secrets.REGISTRY_LOGIN_SERVER }}/projectgroupe5:${{ github.sha }}
-            registry-login-server: ${{ secrets.REGISTRY_LOGIN_SERVER }}
-            registry-username: ${{ secrets.REGISTRY_USERNAME }}
-            registry-password: ${{ secrets.REGISTRY_PASSWORD }}
-            name: projectgroupe5
-            location: 'france central'
-            secure-environment-variables: API_KEY=${{ secrets.API_KEY }}
+            appSourcePath: ${{ github.workspace }}/src
+            acrName: ${{ secrets.REGISTRY_LOGIN_SERVER }}
+            containerAppName: projectgroupe5-container-app
+            resourceGroup: projectgroupe5-container-rg
