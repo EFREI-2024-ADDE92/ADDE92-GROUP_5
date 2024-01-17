@@ -34,7 +34,7 @@ jobs:
           uses: azure/container-apps-deploy-action@v1
           with:
             containerAppName: groupe5-container
-            containerAppEnvironment: projectgroupe5-container-env
+            containerAppEnvironment: groupe5-container-env
             imageToDeploy: ${{ secrets.REGISTRY_LOGIN_SERVER }}/projectgroupe5:${{ github.sha }}
             acrName: ${{ secrets.REGISTRY_USERNAME }}
             acrUsername: ${{ secrets.REGISTRY_USERNAME }}
