@@ -13,13 +13,12 @@ jobs:
           uses: azure/login@v1
           with:
             creds: ${{ secrets.AZURE_CREDENTIALS }}
-        
-        #- name: Lint Dockerfile
-        #  uses: actions/checkout@v3
-        #  with:
-        #    dockerfile: Dockerfile
-        #- run: hadolint Dockerfile
 
+        - uses: actions/checkout@v3
+        - uses: hadolint/hadolint-action@v3.1.0
+          with:
+            dockerfile: Dockerfile
+        
         - name: 'Build and push image'
           uses: azure/docker-login@v1
           with:
