@@ -7,9 +7,25 @@ app = Flask(__name__)
 
 api_call_counter = Counter('api_calls_total', 'Total number of API calls')
 
-iris_setosa_predictions_total = Counter('iris_setosa_predictions_total', 'Total number of Iris Setosa predictions')
-iris_virginica_predictions_total = Counter('iris_virginica_predictions_total', 'Total number of Iris Virginica predictions')
-iris_versicolor_predictions_total = Counter('iris_versicolor_predictions_total', 'Total number of Iris Versicolor predictions')
+# Add prometheus_client metric with labels
+iris_setosa_predictions_total = Counter(
+    'setosa_predictions_total',
+    'Total number of Iris Setosa predictions',
+    labelnames=['endpoint', 'predictions'],
+    namespace='api',
+)
+iris_virginica_predictions_total = Counter(
+    'virginica_predictions_total',
+    'Total number of Iris Virginica predictions',
+    labelnames=['endpoint', 'predictions'],
+    namespace='api',
+)
+iris_versicolor_predictions_total = Counter(
+    'versicolor_predictions_total',
+    'Total number of Iris Versicolor predictions',
+    labelnames=['endpoint', 'predictions'],
+    namespace='api',
+)
 
 @app.route('/metrics')
 def metrics():
@@ -40,18 +56,18 @@ def predict():
 
     # Predict the flower class
     features = np.array([[sepal_length, sepal_width, petal_length, petal_width]])
-    prediction = model.predict(features)
+    prediction = model.predict(features)[0]
 
     # Enregistrez l'appel dans le compteur
     api_call_counter.inc()
 
     # Mettez à jour les compteurs pour chaque classe en fonction de la prédiction
-    if prediction[0] == 'Iris-setosa':
-        iris_setosa_predictions_total.inc()
-    elif prediction[0] == 'Iris-virginica':
-        iris_virginica_predictions_total.inc()
-    elif prediction[0] == 'Iris-versicolor':
-        iris_versicolor_predictions_total.inc()
+    if prediction == 'Iris-setosa':
+        iris_setosa_predictions_total.labels(endpoint='/predict', predictions=str(prediction)).inc()
+    elif prediction == 'Iris-virginica':
+        iris_virginica_predictions_total.labels(endpoint='/predict', predictions=str(prediction)).inc()
+    elif prediction == 'Iris-versicolor':
+        iris_versicolor_predictions_total.labels(endpoint='/predict', predictions=str(prediction)).inc()
 
     return jsonify({'prediction': str(prediction)})
 
