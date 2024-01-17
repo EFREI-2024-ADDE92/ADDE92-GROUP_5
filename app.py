@@ -21,7 +21,7 @@ def predict():
         return jsonify({'error': str("Missing parameter(s)")})
     
     # Load the machine learning model
-    model = joblib.load("model.pkl")
+    model = joblib.load("model_knn.pkl")
 
     # Predict the flower class
     features = ["sepal_length","sepal_width", "petal_length", "petal_width"]
