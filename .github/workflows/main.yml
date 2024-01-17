@@ -31,3 +31,4 @@ jobs:
             acrName: ${{ secrets.REGISTRY_USERNAME }}
             acrUsername: ${{ secrets.REGISTRY_USERNAME }}
             acrPassword: ${{ secrets.REGISTRY_PASSWORD }}
+            resourceGroup: ${{ secrets.RESOURCE_GROUP }}
