@@ -56,6 +56,6 @@ def predict():
     return jsonify({'prediction': str(prediction)})
 
 if __name__ == '__main__':
-    app.run(port=8000, debug=True)
+    app.run(debug=True, host="0.0.0.0", port=80)
 
 
