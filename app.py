@@ -1,6 +1,5 @@
 from flask import Flask, request, jsonify, Response
 from prometheus_client import Counter, generate_latest, REGISTRY
-import prometheus_client
 import joblib
 import numpy as np
 
