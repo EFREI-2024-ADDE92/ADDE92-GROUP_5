@@ -11,24 +11,7 @@
 # Étapes de réalisation
 
 ## Choix Techniques:
-- Flask : Utiliser pour créer l'API
-- 
-
-## Commandes Utilisés:
-- 
-- 
-
-## Test de Charge:
-- 
-
-## Observations:
-- 
-- 
-
-## Difficultés Rencontrées:
-- 
-- 
-
+Utilisation de Flask pour la création de l'API
 
 Construction de l'image Docker: 
 docker build -t irisapi:v1 .
@@ -45,3 +28,17 @@ Tapez docker info ou docker version. Si Docker est en cours d'exécution, ces co
 Si vous utilisez Docker Desktop, ouvrez l'application Docker Desktop. Elle devrait démarrer le daemon Docker automatiquement.
 Si vous utilisez Docker dans un environnement Linux, Vous pouvez le faire en exécutant la commande: sudo systemctl start docker
 3. Relancer la commande : docker build -t irisapi:v1 .
+
+## Commandes Utilisés:
+- 
+- 
+
+## Observations:
+- 
+- 
+
+## Difficultés Rencontrées:
+- 
+- 
+
+
