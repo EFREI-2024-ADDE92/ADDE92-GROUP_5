@@ -51,7 +51,7 @@ def predict():
         print("--> Missing parameter(s)") 
         return jsonify({'error': str("Missing parameter(s)")})
     
-    # Load the machine learning model
+    # Load the machine learning model ############ avoid
     model = joblib.load("model_knn.pkl")
 
     # Predict the flower class
