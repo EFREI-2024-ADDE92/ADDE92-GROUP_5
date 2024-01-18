@@ -33,7 +33,7 @@ def metrics():
 
 @app.route("/", methods=["GET"])
 def welcome():
-    return jsonify({'Message': str("Bonjour! Appelez l'api /predict avec les paramètres sl (sepal lenght), sw (sepal width), pl (petal lenght), pw (petal width).")})
+    return jsonify({'Message': str("Bonjour! Appelez l'api /predict avec les paramètres: sl (sepal lenght), sw (sepal width), pl (petal lenght), pw (petal width).")})
 
 @app.route("/predict", methods=["GET"])
 def predict():

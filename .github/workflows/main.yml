@@ -6,8 +6,8 @@ jobs:
         runs-on: ubuntu-latest
         env:
           PROJET_NAME: projectgroupe5
-          CONTAINER_ENV: groupe5-container-env
-          CONTAINER_APP: groupe5-container-app
+          CONTAINER_ENV: groupe5-newcontainer-env
+          CONTAINER_APP: groupe5-newcontainer-app
           LOCATION: francecentral
         steps:
         # checkout the repo
@@ -43,7 +43,7 @@ jobs:
           with:
             containerAppName: ${{ env.CONTAINER_APP }}
             containerAppEnvironment: ${{ env.CONTAINER_ENV }}
-            imageToDeploy: ${{ secrets.REGISTRY_LOGIN_SERVER }}/projectgroupe5:${{ github.sha }}
+            imageToDeploy: ${{ secrets.REGISTRY_LOGIN_SERVER }}/${{ env.PROJET_NAME }}:${{ github.sha }}
             acrName: ${{ secrets.REGISTRY_USERNAME }}
             acrUsername: ${{ secrets.REGISTRY_USERNAME }}
             acrPassword: ${{ secrets.REGISTRY_PASSWORD }}
