@@ -6,7 +6,7 @@ nb = int(input("Nombre de tests aléatoires : "))
 PRO_URL = "https://groupe5-newcontainer-app.politewater-20dc8a0f.francecentral.azurecontainerapps.io"
 DEV_URL = "http://127.0.0.1:80"
 
-BASE_URL = DEV_URL
+BASE_URL = PRO_URL
 
 print("\n=========== TESTS PREDICTION ===========\n")
 for i in range(0, nb):
