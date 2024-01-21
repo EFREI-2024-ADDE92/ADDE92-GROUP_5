@@ -27,6 +27,9 @@ iris_versicolor_predictions_total = Counter(
     namespace='api',
 )
 #
+# Load the machine learning model 
+model = joblib.load("model_knn.pkl")
+#
 #
 @app.route("/", methods=["GET"])
 def welcome():
@@ -51,9 +54,6 @@ def predict():
     if sepal_length is None or sepal_width is None or petal_length is None or petal_width is None:
         print("--> Missing parameter(s)") 
         return jsonify({'error': str("Missing parameter(s)")})
-    
-    # Load the machine learning model ############ avoid
-    model = joblib.load("model_knn.pkl")
 
     # Predict the flower class
     features = np.array([[sepal_length, sepal_width, petal_length, petal_width]])
