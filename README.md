@@ -52,7 +52,25 @@ Notre application peut être déployé et testé en local. Et pour faciliter les
 
 > ## 3. Configuration du Dockerfile
     
-    A compléter
+docker build -t projectgroupe5 .
+
+`projectgroupe5` : nom de l'image
+
+`.` : répertoire contenant le fichier dockerfile
+
+Si vous rencontrez des erreurs avec l'image docker:
+
+1. Vérifier si Docker est en Cours d'Exécution
+
+Ouvrez une nouvelle fenêtre de terminal.
+Tapez docker info ou docker version. Si Docker est en cours d'exécution, ces commandes retourneront des informations sur Docker. Si elles échouent, cela confirme que Docker n'est pas en cours d'exécution.
+
+2. Démarrer le Daemon Docker
+
+Si vous utilisez Docker Desktop, ouvrez l'application Docker Desktop. Elle devrait démarrer le daemon Docker automatiquement.
+Si vous utilisez Docker dans un environnement Linux, Vous pouvez le faire en exécutant la commande: sudo systemctl start docker
+
+3. Relancer la commande : docker build -t projectgroupe5 .
 
 > ## 4. Configuration d"un workflow Github Action
 - Créer le fichier `.github/workflows/main.yml` dans le dossier du projet
