@@ -19,14 +19,14 @@ Déployer, à travers d'une API, un modèle entraîné de prédiction en utilisa
 
 https://learn.microsoft.com/en-us/azure/developer/python/containers-in-azure-overview-python?tabs=vscode-ide
 
-> NOTE: Ce projet a pour objectif de mettre à disposition dans un Container Apps, une API de prédiction de la classe des fleurs d'iris sur une fournisseur de srervice cloud. Dans notre cas, nous avons choisi Azure. Cet API doit être déployé sur le Azure Container Apps par un workflow Github Action.
+> NOTE: Ce projet a pour objectif de mettre à disposition dans un Container Apps, une API de prédiction de la classe des fleurs d'iris sur un fournisseur de srervice cloud. Dans notre cas, nous avons choisi Azure. Cet API doit être déployé sur le Azure Container Apps par un workflow Github Action.
 
 > ## 1. Notre modèle de machine learning
-
-    A compléter
+Notre modèle machine learning consiste à utiliser `KNeighborsClassifier()` de la bibliothèque scikit learn pour pouvoir entrainer les données et la prédiction. Le modèle k-NN est utilisé avec l'ensemble de données Iris en raison de sa simplicité, de la distinctivité des classes et de son absence d'hypothèses sur la distribution des données.
+Les données d'iris utilisé pour l'entrainement du modèle sont directement importer du site https://archive.ics.uci.edu/dataset/53/iris à l'aide de la commande "`iris = fetch_ucirepo(id=53)`". Ceci nous évite de télécharger le jeu de données en local.
 
 > ## 2. Développement de l'API
-Notre API, que vous pouvez retrouver dasn le fichier `app.py`, est développé en Python et a nécessité l'utilisation des packages suivants:
+Notre API, que vous pouvez retrouver dans le fichier `app.py`, est développé en Python et a nécessité l'utilisation des packages suivants:
 
     - Flask
     - Premoetheus client
