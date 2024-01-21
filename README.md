@@ -209,7 +209,7 @@ api_setosa_predictions_created{endpoint="/predict",predictions="Iris-setosa"} 1.
 # TYPE api_versicolor_predictions_total counter
 ```
 
-> ### 5.2 Test de via le lien du Container Apps
+> ### 5.2 Test via le lien du Container Apps
 
 Pour ce test, vous devez juste remplacer l'url de base par le celui du Container Apps. C'est à dire en lieu et place de `http://127.0.0.1:80`, utiliser `https://groupe5-newcontainer-app.politewater-20dc8a0f.francecentral.azurecontainerapps.io`.
 
@@ -223,10 +223,10 @@ La principale défficulté rencontrée dans la réalisation de ce proejt est la 
 
 
 > ###################################################
-- SIAKE TCHOUAMOU Sophie Manuella
 - AGBONON EDAGBEDJI Yao Anicet
+- SIAKE TCHOUAMOU Sophie Manuella
+- BOUDOUKHA Maroua
 - AGBAHOLOU Marie-Lynne Murielle Essénahoun
 - GUZMAN Kymsy
-- BOUDOUKHA Maroua
 - WANDJI K Fréderique
 > ###################################################
