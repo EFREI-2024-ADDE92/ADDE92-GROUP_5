@@ -2,11 +2,11 @@ from flask import Flask, request, jsonify, Response
 from prometheus_client import Counter, generate_latest, REGISTRY
 import joblib
 import numpy as np
-
+#
 app = Flask(__name__)
-
+#
 api_call_counter = Counter('api_calls_total', 'Total number of API calls')
-
+#
 # Add prometheus_client metric with labels
 iris_setosa_predictions_total = Counter(
     'setosa_predictions_total',
@@ -26,15 +26,16 @@ iris_versicolor_predictions_total = Counter(
     labelnames=['endpoint', 'predictions'],
     namespace='api',
 )
-
+#
+#
+@app.route("/", methods=["GET"])
+def welcome():
+    return jsonify({'Message': str("Bonjour! Appelez l'api /predict avec les paramètres: sl (sepal lenght), sw (sepal width), pl (petal lenght), pw (petal width).")})
+#
 @app.route('/metrics')
 def metrics():
     return Response(generate_latest(REGISTRY), mimetype='text/plain')
-
-@app.route("/", methods=["GET"])
-def welcome():
-    return jsonify({'Message': str("Bonjour! Appelez l'api /predict avec les paramètres sl (sepal lenght), sw (sepal width), pl (petal lenght), pw (petal width).")})
-
+#
 @app.route("/predict", methods=["GET"])
 def predict():
     '''
@@ -51,7 +52,7 @@ def predict():
         print("--> Missing parameter(s)") 
         return jsonify({'error': str("Missing parameter(s)")})
     
-    # Load the machine learning model
+    # Load the machine learning model ############ avoid
     model = joblib.load("model_knn.pkl")
 
     # Predict the flower class
@@ -70,7 +71,7 @@ def predict():
         iris_versicolor_predictions_total.labels(endpoint='/predict', predictions=str(prediction)).inc()
 
     return jsonify({'prediction': str(prediction)})
-
+#
 if __name__ == '__main__':
     app.run(debug=True, host="0.0.0.0", port=80)
 
